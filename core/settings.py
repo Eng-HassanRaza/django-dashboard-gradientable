@@ -82,11 +82,11 @@ DATABASES = {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
             # 'NAME': 'sample-dashboard-test',
-            'NAME': 'postgres',
+            'NAME': config('DB_NAME'),
 
-            'USER': 'postgres',
+            'USER': config('DB_USER'),
 
-            'PASSWORD': '2v3u13v2jbjYIB!',
+            'PASSWORD': config('DB_PASSWORD'),
 
             'HOST': 'sample-dashboard-test.c51gde6njtsv.us-east-1.rds.amazonaws.com',
 
