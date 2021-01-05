@@ -8,14 +8,16 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.template import loader
 from django.http import HttpResponse
 from django import template
-
+from .models import CarbonCodes
 @login_required(login_url="/login/")
 def index(request):
-    
+    carbon_obj = CarbonCodes.objects.all()
     context = {}
     context['segment'] = 'index'
+    context['carbon_obj']=carbon_obj
 
-    html_template = loader.get_template( 'index.html' )
+    html_template = loader.get_template( 'tbl_bootstrap.html' )
+    # html_template = loader.get_template( 'index.html' )
     return HttpResponse(html_template.render(context, request))
 
 @login_required(login_url="/login/")
