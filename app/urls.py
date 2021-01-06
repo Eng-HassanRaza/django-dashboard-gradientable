@@ -15,4 +15,5 @@ urlpatterns = [
 
     # The home page
     path('', views.index, name='home'),
+    path('table_data_by_id', views.get_tables_by_id, name='table_data_by_id'),
 ]
