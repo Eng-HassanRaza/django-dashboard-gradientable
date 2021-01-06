@@ -29,14 +29,20 @@ def get_tables_by_id(request):
         html_tmplt = loader.get_template('postgre_table.html')
         # search = request.POST.get('txtSearch')
         carbon_obj = CarbonCodes.objects.filter(phone_id=int(search_by))
-        context = {
-            'carbon_obj': carbon_obj
-        }
-        data['html_table'] = html_tmplt.render(
-                                              context,
-                                              request=request
-                                              )
-        return JsonResponse(data)
+        if carbon_obj:
+            context = {
+                'carbon_obj': carbon_obj
+            }
+            data['html_table'] = html_tmplt.render(
+                context,
+                request=request
+            )
+            return JsonResponse(data)
+        else:
+            data['html_table']='<tr><td></td><td>No Data found</td>No data found<td></td>/tr>'
+            # data=None
+            return JsonResponse(data)
+
 
 
 @login_required(login_url="/login/")

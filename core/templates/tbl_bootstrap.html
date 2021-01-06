@@ -544,7 +544,12 @@ $("#search").submit(function(e) {
     }).done(function(data) {
         $("div.spanner").removeClass("show");
         $("div.overlay").removeClass("show");
-        $('#pg_data').html(data.html_table);
+        if(data){
+            $('#pg_data').html(data.html_table);
+            }
+         else{
+             $('#pg_data').html(data.html_table);
+         }
     });
 });
 </script>
